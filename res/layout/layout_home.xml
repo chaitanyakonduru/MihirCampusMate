@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    
+        <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/action_bar" />
+    
+
+    <FrameLayout
+        android:id="@+id/layout_relative_dashboardlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg9patch" >
+
+        <com.mms.mcm.custom.DashboardLayout
+            android:id="@+id/dashboardlayout"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_below="@+id/actionbarlayout"
+            android:background="@drawable/menu_bg" >
+
+            <TextView
+                android:id="@+id/home_tv_grades"
+                style="@style/DashboardButtonStyle"
+                android:drawableTop="@drawable/home_img_grades"
+                android:text="@string/home_text_grades" />
+
+            <TextView
+                android:id="@+id/home_tv_homework_projects"
+                style="@style/DashboardButtonStyle"
+                android:drawableTop="@drawable/home_img_home_work_projects"
+                android:text="@string/home_text_homework_projects" />
+
+            <TextView
+                android:id="@+id/home_tv_notifications"
+                style="@style/DashboardButtonStyle"
+                android:drawableTop="@drawable/home_img_notifications"
+                android:text="@string/home_text_notifications" />
+
+            <TextView
+                android:id="@+id/home_tv_library"
+                style="@style/DashboardButtonStyle"
+                android:drawableTop="@drawable/home_img_library"
+                android:text="@string/home_text_library" />
+
+            <TextView
+                android:id="@+id/home_tv_complaint_cell"
+                android:drawableTop="@drawable/home_img_complaint_cell"
+                style="@style/DashboardButtonStyle"
+                android:text="@string/home_text_complaint_cell" />
+
+            <TextView
+                android:id="@+id/home_tv_myaccount"
+                style="@style/DashboardButtonStyle"
+                android:drawableTop="@drawable/home_img_myaccount"
+                android:text="@string/home_text_myaccount" />
+        </com.mms.mcm.custom.DashboardLayout>
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="50dip"
+            android:layout_marginTop="40dip"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+    </FrameLayout>
+  
+        
+    <include
+        
+        
+        layout="@layout/mms_ad" />
+  
+
+</LinearLayout>

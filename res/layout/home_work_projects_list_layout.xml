@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/LatestUpdatesTextViews"
+            android:text="@string/subject_code"
+            android:textColor="#ffff00"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/LatestUpdatesTextViews"
+            android:text="Science"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dip"
+        android:text="Due Date : 15/3/2012"
+        android:textStyle="bold" />
+
+</LinearLayout>

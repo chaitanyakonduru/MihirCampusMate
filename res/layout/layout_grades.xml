@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg9patch"
+        android:orientation="vertical" >
+
+        <include layout="@layout/action_bar_tv_student_name" />
+
+        <TextView
+            style="@style/headertextstyle"
+            android:text="@string/home_text_grades" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="1"
+            android:background="@drawable/menu_bg"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/LatestUpdatesTextViews"
+                        android:gravity="center"
+                        android:text="@string/course_code"
+                        android:textColor="#ffff00"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/LatestUpdatesTextViews"
+                        android:gravity="center"
+                        android:text="@string/course_name"
+                        android:textColor="#ffff00"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/LatestUpdatesTextViews"
+                        android:gravity="center"
+                        android:text="@string/grade"
+                        android:textColor="#ffff00"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+            <include layout="@layout/layout_grades_data" />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+        <include layout="@layout/sharebutton" />
+        <TextView style="@style/LatestUpdatesTextViews"
+            android:text="GPA : 3.60"
+            android:textStyle="bold"
+            android:paddingRight="20dip"
+            android:gravity="right"
+            />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/mms_ad" />
+
+</LinearLayout>

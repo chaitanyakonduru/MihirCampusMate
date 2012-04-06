@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+
+   
+    <string name="app_name">Mihir CampusMate</string>
+    <string name="home_text_grades">GRADES</string>
+    <string name="home_text_homework_projects">HOMEWORK PROJECTS</string>
+    <string name="home_text_notifications">NOTIFICATIONS</string>
+    <string name="home_text_library">LIBRARY</string>
+    <string name="home_text_complaint_cell">COMPLAINT CELL</string>
+    <string name="home_text_myaccount">MY ACCOUNT</string>
+    <string name="student_name">Student Name</string>
+    <string name="actionbar_universityname">MMS University</string>
+    <string name="product_name">Mihir CampusMate</string>
+    <string name="trade_mark">TM</string>
+    <string name="login_header_text">LOGIN</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forgotpwd">Forgot Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="description">Description</string>
+    <string name="username">User Name :</string>
+    <string name="logout_time">Logout Time</string>
+    <string name="change_pwd">Change Password</string>
+    <string name="signout">  Signout  </string>
+    <string name="change">Change</string>
+    <string name="send">Send</string>
+  	<string name="course_code">Course Code</string>
+  	<string name="course_name">Course Name</string> 
+  	<string name="grade">Grade</string> 
+  	<string name="subject_code">Subject Code : 002</string> 
+  	<string name="book_id">MMS Book ID</string>
+  	<string name="isbn_no">ISBN NO</string>
+  	<string name="search">Search</string>
+  	<string name="books_search">Books Search</string>
+	<string name="books_in_possession">Books In Possession</string>  	  
+</resources>
