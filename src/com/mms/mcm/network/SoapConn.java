@@ -14,7 +14,7 @@ import com.mms.mcm.custom.Constants;
 public final class SoapConn {
 
 	private static final String TAG = "SoapConnection";
-	private static final String URL = "http://mihirhealthsrv.elasticbeanstalk.com/services/MIHIRHealthSrv?wsdl";
+	private static final String URL = "http://mihircampusmate.elasticbeanstalk.com/services/MihirCampusMateSrv?wsdl";
 	private static HttpTransportSE httpTransportSE;
 
 	public static void callWebService(String actionName, SoapObject request,

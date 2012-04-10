@@ -1,5 +1,10 @@
 package com.mms.mcm.activities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.ksoap2.serialization.SoapObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +18,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.mms.mcm.R;
+import com.mms.mcm.custom.Constants;
+import com.mms.mcm.custom.Utils;
+import com.mms.mcm.model.AuthenticateResponse;
+import com.mms.mcm.network.NetworkCallback;
+import com.mms.mcm.network.Parser;
+import com.mms.mcm.network.SoapServiceManager;
 
 public class ComplaintCellActivity extends Activity implements OnClickListener {
 
@@ -20,22 +31,53 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 	private LinearLayout complaintNamesLayout;
 	private EditText description;
 	private  Integer i = 1;
+	private AuthenticateResponse authenticateResponse;
+	private ImageView addButton;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_complaint_cell);
 		initializeViews();
+		MihirApp app=(MihirApp) getApplication();
+		authenticateResponse=app.getCurUserInfo();
 
 	}
 
 	private void initializeViews() {
 
-		findViewById(R.id.action_bar_image_add).setOnClickListener(
-				ComplaintCellActivity.this);
+		addButton=(ImageView)findViewById(R.id.action_bar_image_add);
+		addButton.setVisibility(View.VISIBLE);
 		complaintNamesLayout = (LinearLayout) findViewById(R.id.layout_linearlayout_campus_cell_names);
 		description=(EditText) findViewById(R.id.complaint_description);
+		
 		findViewById(R.id.complaint_cell_btn_send).setOnClickListener(ComplaintCellActivity.this);
 	}
+	
+final NetworkCallback<Object> callback=new NetworkCallback<Object>() {
+		
+		public void onSuccess(Object object) {
+			removeDialog(Constants.PROGRESSDIALOG);
+			try
+			{
+				String msg=Parser.parseComplaintCellResponse((SoapObject)object);
+				Utils.showDialog(msg, ComplaintCellActivity.this, false);
+			}
+			catch(ClassCastException cce)
+			{
+				Utils.showToast("Unable to process your request", ComplaintCellActivity.this);
+				Log.v(TAG, cce.getMessage());
+			}
+			catch(Exception e)
+			{
+				Log.v(TAG, e.getMessage());
+			}
+		}
+		public void onFailure(String errorMessge) {
+			removeDialog(Constants.PROGRESSDIALOG);
+			Log.v(TAG, errorMessge);
+		}
+	};
+	
 
 	public void onClick(View v) {
 
@@ -48,6 +90,7 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 			complaintNamesLayout.removeView(v1);
 			break;
 		case R.id.complaint_cell_btn_send:
+			showDialog(Constants.PROGRESSDIALOG);
 			submitComplaint();
 			break;
 		default:
@@ -57,12 +100,15 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 
 	private void submitComplaint() {
 		int count=complaintNamesLayout.getChildCount();
+		List<String> names=new ArrayList<String>();
 		for (int i=0;i<count;i++) {
 			View v=complaintNamesLayout.getChildAt(i);
 			EditText et=(EditText) v.findViewById(R.id.layout_complaint_cell_edittext_name);
-			Log.v(TAG, et.getText().toString());
-			
+			names.add(et.getText().toString());
+//			Log.v(TAG, et.getText().toString());
 		}
+		SoapServiceManager manager=SoapServiceManager.getInstance(ComplaintCellActivity.this);
+		manager.sendComplaintCellDetailsRequest(authenticateResponse.getStudent_ID(), names, description.getText().toString(), callback);
 	}
 
 	private void addView() {

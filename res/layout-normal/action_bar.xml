@@ -13,8 +13,9 @@
 
         <ImageView
             android:id="@+id/school_logo"
+            android:src="@drawable/logo"
             android:layout_width="40dip"
-            android:layout_height="40dip"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginLeft="5dip" >
         </ImageView>
@@ -84,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="5dip"
+            android:visibility="gone"
             >
         </ImageView>
     </LinearLayout>

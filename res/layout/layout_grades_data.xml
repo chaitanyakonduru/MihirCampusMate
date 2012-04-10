@@ -1,141 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableRow
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/marks_row"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:layout_weight="1" >
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
+    <TextView
+        android:id="@+id/course_code"
+        style="@style/LatestUpdatesTextViews"
+        android:singleLine="true"
+        android:gravity="center"
+        android:text="003" />
 
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-           
-            android:gravity="center"
-            android:text="003" />
+    <TextView
+        android:id="@+id/course_name"
+        style="@style/LatestUpdatesTextViews"
+        android:singleLine="true"
+        android:gravity="center"
+        android:text="Science" />
 
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-           
-            android:gravity="center"
-            android:text="Science" />
+    <TextView
+        android:id="@+id/course_grade"
+        android:singleLine="true"
+        style="@style/LatestUpdatesTextViews"
+        android:gravity="center"
+        android:text="72" />
 
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-    <TableRow
-        android:layout_marginTop="5dip"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-           
-            android:gravity="center"
-            android:text="003" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="Science" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dip"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="003" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="Science" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dip"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="003" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="Science" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dip"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="003" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="Science" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_marginTop="5dip"
-        android:layout_weight="1"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="003" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="Science" />
-
-        <TextView
-            style="@style/LatestUpdatesTextViews"
-            android:gravity="center"
-            android:text="72" />
-    </TableRow>
-
-</TableLayout>
+</TableRow>

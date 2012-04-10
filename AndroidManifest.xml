@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="preferExternal"
     package="com.mms.mcm"
     android:versionCode="1"
-    android:versionName="1.0" android:installLocation="preferExternal">
+    android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="4"
-        
-         />
-
+    <uses-sdk android:minSdkVersion="4" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.READ_OWNER_DATA"/>
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" android:theme="@android:style/Theme.Black.NoTitleBar">
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Black.NoTitleBar" android:name=".activities.MihirApp">
         <activity
-            android:label="@string/app_name"
-            android:name=".activities.MihirCampusmateActivity" >
+            android:name=".activities.LibraryActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" >
+            
         </activity>
-        <activity android:name=".activities.LibraryActivity" android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"><intent-filter >
+        <activity
+            android:name=".activities.ComplaintCellActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize|adjustPan" >
+        </activity>
+        <activity android:name=".activities.NotificationsActivity" >
+        </activity>
+        <activity android:name=".activities.LoginActivity"><intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
-        <activity android:name=".activities.ComplaintCellActivity" android:windowSoftInputMode="stateHidden|adjustResize|adjustPan"></activity>
+        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.HomeActivity"></activity>
+        <activity android:name=".activities.LibraryActivity"></activity>
+        <activity android:name=".activities.SplashActivity"></activity>
+        <activity android:name=".activities.HomeWorkProjectsActivity"></activity>
+        <activity android:name=".activities.GradesActivity"></activity>
+        <activity android:name=".activities.MyAccountActivity"></activity>
+        <activity android:name=".activities.ChangePwdActivity"></activity>
+        <activity android:name=".activities.ComplaintCellActivity"></activity>
     </application>
 
 </manifest>

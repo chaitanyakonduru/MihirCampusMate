@@ -4,19 +4,69 @@ public class AuthenticateResponse {
 
 	private static AuthenticateResponse authenticateResponse;
 
-	String authenticateMSG = "";
-	int userType = 1000;
-	String student_ID = "";
-	String campus_ID = "";
-	String student_Name = "";
-	String campus_Registration_Number = "";
-	String campus_Student_Id = "";
-	private String logo_URL;
-	String fee_Due = "";
-	String fee_DueDate = "";
-	String credits_Acheived = "";
-	String cGPA = "";
-	String student_Campus_Number = "";
+	String authenticateMSG ;
+	int userType;
+	String student_ID;
+	String campus_ID;
+	String student_Name;
+	String campusName;
+	String campusShortName;
+	String campus_Registration_Number;
+	String campus_Student_Id;
+	String logo_URL;
+	String fee_Due;
+	String fee_DueDate ;
+	String credits_Acheived;
+	String cGPA ;
+	String student_Campus_Number;
+	String campusPoliceNumber;
+	String campusLocalNumber;
+	String campusEmergencyNumber;
+	String student_Doctor_Number = "";
+	String campus_Police_number = "";
+	String campus_Local_number = "";
+	String campus_Emmergency_Number = "";
+
+	public String getCampusShortName() {
+		return campusShortName;
+	}
+
+	public void setCampusShortName(String campusShortName) {
+		this.campusShortName = campusShortName;
+	}
+
+	public String getCampusPoliceNumber() {
+		return campusPoliceNumber;
+	}
+
+	public void setCampusPoliceNumber(String campusPoliceNumber) {
+		this.campusPoliceNumber = campusPoliceNumber;
+	}
+
+	public String getCampusLocalNumber() {
+		return campusLocalNumber;
+	}
+
+	public void setCampusLocalNumber(String campusLocalNumber) {
+		this.campusLocalNumber = campusLocalNumber;
+	}
+
+	public String getCampusEmergencyNumber() {
+		return campusEmergencyNumber;
+	}
+
+	public void setCampusEmergencyNumber(String campusEmergencyNumber) {
+		this.campusEmergencyNumber = campusEmergencyNumber;
+	}
+
+	public String getCampusName() {
+		return campusName;
+	}
+
+	public void setCampusName(String campusName) {
+		this.campusName = campusName;
+	}
+
 	public String getLogo_URL() {
 		return logo_URL;
 	}
@@ -25,10 +75,7 @@ public class AuthenticateResponse {
 		logo_URL = logoURL;
 	}
 
-	String student_Doctor_Number = "";
-	String campus_Police_number = "";
-	String campus_Local_number = "";
-	String campus_Emmergency_Number = "";
+	
 
 	
 

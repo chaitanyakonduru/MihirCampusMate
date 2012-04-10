@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mms.mcm.R;
-import com.mms.mcm.custom.Utils;
 import com.mms.mcm.model.AuthenticateResponse;
 
 public class HomeActivity extends Activity implements OnClickListener {
@@ -30,7 +29,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		app = (MihirApp) getApplication();
 		curUser = app.getCurUserInfo();
 		initViews();
-		Utils.setActionBar(hospitalName, null, curUser, hospitalLogo);
+//		Utils.setActionBar(hospitalName, null, curUser, hospitalLogo);
 		
 		try {
 			Log.v(TAG, curUser.getStudent_ID());

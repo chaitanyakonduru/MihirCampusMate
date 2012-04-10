@@ -11,7 +11,7 @@ import android.content.Context;
 
 public final class SoapServiceManager {
 
-	private final static String NAMESPACE ="http://mihirmobile.com/MIHIRHealthSrv/";
+	private final static String NAMESPACE ="http://mihirmobile.com/MIHIRCampusMateSrv/";
 
 	private static final String SOAP_ACTION_REGISTRATION = "http://mihirmobile.com/MIHIRCampusMateSrv/Registration";
 	private static final String SOAP_ACTION_FORGOTPASSWORD = "http://mihirmobile.com/MIHIRCampusMateSrv/ForgotPassword";
@@ -64,7 +64,7 @@ public final class SoapServiceManager {
 	}
 	
 	
-	public void sendGetHomeWorkProjectsRequest(int student_Id,
+	public void sendGetHomeWorkProjectsRequest(String student_Id,
 			NetworkCallback<Object> callback) {
 		String methodName = "GetHomeWorkProjects";
 		final String actionName = SOAP_ACTION_GETHOMEWORKPROJECTS;
@@ -86,7 +86,7 @@ public final class SoapServiceManager {
 
 	}
 
-	public  void sendGetNotificationDetailsRequest(int student_Id,
+	public  void sendGetNotificationDetailsRequest(String student_Id,
 			NetworkCallback<Object> callback) {
 		String methodName = "GetNotifications";
 		final String actionName = SOAP_ACTION_GETNOTIFICATIONS;
@@ -107,7 +107,7 @@ public final class SoapServiceManager {
 
 	}
 
-	public void sendGetCampusCalenderDetailsRequest(int campus_Id,int student_Id,
+	public void sendGetCampusCalenderDetailsRequest(String campus_Id,String student_Id,
 			NetworkCallback<Object> callback) {
 		String methodName = "GetCampusCalender";
 		final String actionName = SOAP_ACTION_GETCAMPUSCALENDER;
@@ -138,6 +138,11 @@ public final class SoapServiceManager {
 
 	public  void sendComplaintCellDetailsRequest(String student_ID,List<String> studentNames,String complaintDescription,
 			NetworkCallback<Object> callback) {
+		String names[]={"","","","",""};
+		for(int i=0;i<studentNames.size();i++)
+		{
+			names[i]=studentNames.get(i);
+		}
 		String methodName = "MakeComplaints";
 		final String actionName = SOAP_ACTION_MAKECOMPLAINTS;
 		final SoapObject requestObj = new SoapObject(NAMESPACE, methodName);
@@ -151,37 +156,37 @@ public final class SoapServiceManager {
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Student_Name1");
-		info.setValue(student_ID);
+		info.setValue(names[0]);
 		requestObj.addProperty(info);
 		
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Student_Name2");
-		info.setValue(student_ID);
+		info.setValue(names[1]);
 		requestObj.addProperty(info);
 		
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Student_Name3");
-		info.setValue(student_ID);
+		info.setValue(names[2]);
 		requestObj.addProperty(info);
 		
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Student_Name4");
-		info.setValue(student_ID);
+		info.setValue(names[3]);
 		requestObj.addProperty(info);
 		
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Student_Name5");
-		info.setValue(student_ID);
+		info.setValue(names[4]);
 		requestObj.addProperty(info);
 		
 		info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
 		info.setName("Complaint_Description");
-		info.setValue(student_ID);
+		info.setValue(complaintDescription);
 		requestObj.addProperty(info);
 		final MihirHandler handler = new MihirHandler(callback);
 		executorService.execute(new Runnable() {

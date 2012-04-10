@@ -75,5 +75,9 @@ public class Projects {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return Notifications_Title;
+	}
 
 }
