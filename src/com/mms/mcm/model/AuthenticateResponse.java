@@ -1,9 +1,14 @@
 package com.mms.mcm.model;
 
-public class AuthenticateResponse {
+import java.io.Serializable;
 
-	private static AuthenticateResponse authenticateResponse;
+public class AuthenticateResponse implements Serializable {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8481399366454577018L;
 	String authenticateMSG ;
 	int userType;
 	String student_ID;
@@ -19,9 +24,7 @@ public class AuthenticateResponse {
 	String credits_Acheived;
 	String cGPA ;
 	String student_Campus_Number;
-	String campusPoliceNumber;
-	String campusLocalNumber;
-	String campusEmergencyNumber;
+
 	String student_Doctor_Number = "";
 	String campus_Police_number = "";
 	String campus_Local_number = "";
@@ -35,30 +38,7 @@ public class AuthenticateResponse {
 		this.campusShortName = campusShortName;
 	}
 
-	public String getCampusPoliceNumber() {
-		return campusPoliceNumber;
-	}
-
-	public void setCampusPoliceNumber(String campusPoliceNumber) {
-		this.campusPoliceNumber = campusPoliceNumber;
-	}
-
-	public String getCampusLocalNumber() {
-		return campusLocalNumber;
-	}
-
-	public void setCampusLocalNumber(String campusLocalNumber) {
-		this.campusLocalNumber = campusLocalNumber;
-	}
-
-	public String getCampusEmergencyNumber() {
-		return campusEmergencyNumber;
-	}
-
-	public void setCampusEmergencyNumber(String campusEmergencyNumber) {
-		this.campusEmergencyNumber = campusEmergencyNumber;
-	}
-
+	
 	public String getCampusName() {
 		return campusName;
 	}
@@ -74,10 +54,6 @@ public class AuthenticateResponse {
 	public void setLogo_URL(String logoURL) {
 		logo_URL = logoURL;
 	}
-
-	
-
-	
 
 	public String getAuthenticateMSG() {
 		return authenticateMSG;
@@ -207,8 +183,5 @@ public class AuthenticateResponse {
 		campus_Emmergency_Number = campusEmmergencyNumber;
 	}
 
-	public static AuthenticateResponse getInstance() {
-		return authenticateResponse == null ? new AuthenticateResponse()
-				: authenticateResponse;
-	}
+	
 }

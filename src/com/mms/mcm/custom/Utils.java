@@ -40,20 +40,20 @@ public final class Utils {
 		builder.create().show();
 	}
 
-	public static final void setActionBar(TextView hospName,
-			TextView patientName, AuthenticateResponse curUser, ImageView logo) {
-		hospName.setText(curUser.getCampus_ID());
-		if (patientName != null) {
-			patientName.setText(curUser.getStudent_Name());
+	public static final void setActionBar(TextView campusName,
+			TextView studentName, AuthenticateResponse curUser, ImageView logo) {
+		campusName.setText(curUser.getCampusShortName());
+		if (studentName != null) {
+			studentName.setText(curUser.getStudent_Name());
 		}
 
 		try {
 			if (drawable != null) {
-				logo.setImageDrawable(drawable);
+//				logo.setImageDrawable(drawable);
 			} else {
-				drawable = Utils.getImageDrawable(curUser
-						.getLogo_URL());
-				logo.setImageDrawable(drawable);
+//				drawable = Utils.getImageDrawable(curUser
+//						.getLogo_URL());
+//				logo.setImageDrawable(drawable);
 			}
 
 		} catch (Exception e) {
@@ -64,6 +64,7 @@ public final class Utils {
 
 	public static final void sendMail(String mailContent, String subject,
 			Context context) {
+		Log.v(TAG, mailContent);
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("mail/Html");
 		intent.putExtra(Intent.EXTRA_TEXT, mailContent);

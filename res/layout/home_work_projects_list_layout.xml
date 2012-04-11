@@ -12,10 +12,17 @@
         <TextView
             android:id="@+id/projects_subject_code"
             android:singleLine="true"
+            android:visibility="gone"
             style="@style/LatestUpdatesTextViews"
             android:text="@string/subject_code"
             android:textColor="#ffff00"
             android:textStyle="bold" />
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject Name :"
+            android:textColor="#ffff00"
+            />
 
         <TextView
             android:id="@+id/projects_subname"

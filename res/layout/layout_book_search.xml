@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/action_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg9patch"
+        android:orientation="vertical" >
+
+        <include layout="@layout/action_bar_tv_student_name" />
+
+        <TextView
+            style="@style/headertextstyle"
+            android:text="Search Results" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            
+            android:background="@drawable/menu_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/isbn_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ISBN No  :"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/book_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Book Id  :"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+      
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/menu_bg"
+            android:orientation="vertical" ><!--
+
+             <include layout="@layout/books_in_possession_list_layout"/> 
+
+            -->
+             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/watermark"
+            android:orientation="vertical" >
+            <ListView
+                android:id="@+id/books_search_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000" >
+            </ListView>
+            </LinearLayout>
+        </LinearLayout>
+      
+    </LinearLayout>
+
+    <include layout="@layout/mms_ad" />
+
+</LinearLayout>

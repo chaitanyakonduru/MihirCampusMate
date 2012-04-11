@@ -4,25 +4,23 @@
     android:id="@+id/marks_row"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:layout_weight="1" >
 
     <TextView
         android:id="@+id/course_code"
         style="@style/LatestUpdatesTextViews"
-        android:singleLine="true"
         android:gravity="center"
         android:text="003" />
 
     <TextView
         android:id="@+id/course_name"
         style="@style/LatestUpdatesTextViews"
-        android:singleLine="true"
         android:gravity="center"
-        android:text="Science" />
+        android:text="Computer Science" />
 
     <TextView
         android:id="@+id/course_grade"
-        android:singleLine="true"
         style="@style/LatestUpdatesTextViews"
         android:gravity="center"
         android:text="72" />

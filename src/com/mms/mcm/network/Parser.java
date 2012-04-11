@@ -8,6 +8,7 @@ import org.ksoap2.serialization.SoapObject;
 import com.mms.mcm.custom.Constants;
 import com.mms.mcm.model.AuthenticateResponse;
 import com.mms.mcm.model.BookSearchResponse;
+import com.mms.mcm.model.Books;
 import com.mms.mcm.model.BooksOnHoldResponse;
 import com.mms.mcm.model.BooksOnPossessionResponse;
 import com.mms.mcm.model.CampusCalendarResponse;
@@ -76,6 +77,9 @@ public class Parser {
 		authenticateResponse.setCampus_Emmergency_Number(object
 				.hasProperty("Campus_Emmergency_Number") ? object
 				.getPropertyAsString("Campus_Emmergency_Number") : "");
+		authenticateResponse.setCampusShortName(object
+				.hasProperty("Campus_Short_Name") ? object
+						.getPropertyAsString("Campus_Short_Name") : "");
 
 		return authenticateResponse;
 	}
@@ -254,9 +258,46 @@ public class Parser {
 
 	public static final BookSearchResponse parseBookSearchResponse(
 			SoapObject object)
-
 	{
+
+		List<Books> booksList = null;
+		Books books;
 		BookSearchResponse bookSearchResponse = new BookSearchResponse();
+		if(object.hasProperty("Books_Search_Message"))
+		{
+			bookSearchResponse.setErrorMsg(object.getPropertyAsString("Books_Search_Message"));
+		}
+		else if(object.hasProperty("Books_Hold_Message"))
+		{
+			bookSearchResponse.setErrorMsg(object.getPropertyAsString("Books_Hold_Message"));
+		}
+		else if(object.hasProperty("Books_Possession_Message"))
+		{
+			bookSearchResponse.setErrorMsg(object.getPropertyAsString("Books_Possession_Message"));
+		}
+		else 
+		{
+			bookSearchResponse.setErrorMsg("");
+		}
+		if(object.hasProperty("Book_List"))
+		{
+			booksList=new ArrayList<Books>();
+			for(int i=0;i<object.getPropertyCount();i++)
+			{
+
+				books=new Books();
+				SoapObject bookSoapObject=(SoapObject) object.getProperty(i);
+				
+				books.setBook_ID(bookSoapObject.hasProperty("Book_ID")?bookSoapObject.getPropertyAsString("Book_ID"):"");
+				books.setBook_Hold_Count(bookSoapObject.hasProperty("Book_Hold_Count")?bookSoapObject.getPropertyAsString("Book_Hold_Count"):"");
+				books.setBook_REF_Number(bookSoapObject.hasProperty("Book_REF_Number")?bookSoapObject.getPropertyAsString("Book_REF_Number"):"");
+				books.setBook_Return_Date(bookSoapObject.hasProperty("Book_Return_Date")?bookSoapObject.getPropertyAsString("Book_Return_Date"):"");
+				books.setBook_Status(bookSoapObject.hasProperty("Book_Status")?bookSoapObject.getPropertyAsString("Book_Status"):"");
+				books.setBook_Title(bookSoapObject.hasProperty("Book_Title")?bookSoapObject.getPropertyAsString("Book_Title"):"");
+				booksList.add(books);
+			}
+		}
+		bookSearchResponse.setBooksList(booksList);
 		return bookSearchResponse;
 	}
 

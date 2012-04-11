@@ -8,15 +8,19 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TabActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 
@@ -31,20 +35,26 @@ import com.mms.mcm.network.NetworkCallback;
 import com.mms.mcm.network.Parser;
 import com.mms.mcm.network.SoapServiceManager;
 
-public class NotificationsActivity extends TabActivity implements OnTabChangeListener{
+public class NotificationsActivity extends TabActivity implements OnTabChangeListener,OnItemClickListener{
 	
 	protected static final String TAG = null;
 	private TabHost tabHost;
 	private SoapServiceManager manager;
+	private List<Projects> prjctsList;
+	
 	private AuthenticateResponse authenticateResponse;
 	private ListView notificationListView;
 	private ListView campusCalendarListView;
+	private TextView studentName;
+	private TextView campusName;
+	private ImageView logo;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_layout_notifications);
 		initializeViews();
 		MihirApp app=(MihirApp) getApplication();
 		authenticateResponse=app.getCurUserInfo();
+		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
 		manager=SoapServiceManager.getInstance(NotificationsActivity.this);
 		tabHost=getTabHost();
 		setupTab("Campus Calendar",R.id.campus_calendar);
@@ -81,11 +91,15 @@ public class NotificationsActivity extends TabActivity implements OnTabChangeLis
 			return tabView;
 		}
 	
-
 	private void initializeViews()  {
 		notificationListView=(ListView) findViewById(R.id.notifications_listview);
 		campusCalendarListView=(ListView) findViewById(R.id.campus_calendar_listview);
-	
+		notificationListView.setOnItemClickListener(NotificationsActivity.this);
+		campusCalendarListView.setOnItemClickListener(NotificationsActivity.this);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
+		
 	}
 
 	public void onTabChanged(String arg0) {
@@ -133,7 +147,21 @@ public class NotificationsActivity extends TabActivity implements OnTabChangeLis
 					prjctsList=response.getNotificationList();
 					if(prjctsList!=null &&prjctsList.size()>0)
 					{
-						notificationListView.setAdapter(new ArrayAdapter<Projects>(NotificationsActivity.this,android.R.layout.simple_list_item_1,prjctsList));
+						notificationListView.setAdapter(new ArrayAdapter<Projects>(NotificationsActivity.this,R.layout.layout_dietcarelisttext,prjctsList));
+						notificationListView.setOnItemClickListener(new OnItemClickListener() {
+
+							@Override
+							public void onItemClick(AdapterView<?> arg0,
+									View arg1, int arg2, long arg3) {
+								
+								Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
+//								Utils.showToast(""+arg2, NotificationsActivity.this);
+								intent.putExtra("myObject", prjctsList.get(arg2));
+								startActivity(intent);
+								
+							}
+							
+						});
 					}
 				}
 				else
@@ -157,7 +185,7 @@ public class NotificationsActivity extends TabActivity implements OnTabChangeLis
 private NetworkCallback<Object> campuscalendarCallBack=new NetworkCallback<Object>() {
 		
 		
-		private List<Projects> prjctsList;
+	
 
 		public void onSuccess(Object object) {
 			removeDialog(Constants.PROGRESSDIALOG);
@@ -173,6 +201,20 @@ private NetworkCallback<Object> campuscalendarCallBack=new NetworkCallback<Objec
 					if(prjctsList!=null &&prjctsList.size()>0)
 					{
 						campusCalendarListView.setAdapter(new ArrayAdapter<Projects>(NotificationsActivity.this,android.R.layout.simple_list_item_1,prjctsList));
+						campusCalendarListView.setOnItemClickListener(new OnItemClickListener() {
+
+							@Override
+							public void onItemClick(AdapterView<?> arg0,
+									View arg1, int arg2, long arg3) {
+								
+								Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
+//								Utils.showToast(""+arg2, NotificationsActivity.this);
+								intent.putExtra("myObject", prjctsList.get(arg2));
+								startActivity(intent);
+								
+							}
+							
+						});
 					}
 				}
 				else
@@ -216,6 +258,16 @@ private NetworkCallback<Object> campuscalendarCallBack=new NetworkCallback<Objec
 			break;
 		}
 		return super.onCreateDialog(id);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		
+		Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
+//		Utils.showToast(""+arg2, NotificationsActivity.this);
+		intent.putExtra("myObject", prjctsList.get(arg2));
+		startActivity(intent);
+		
 	}
 	
 

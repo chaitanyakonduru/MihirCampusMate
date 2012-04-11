@@ -39,6 +39,7 @@ public class HomeWorksAdapter extends ArrayAdapter<Projects> {
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.home_work_projects_list_layout,
 					null);
+			
 			holder = new ViewHolder();
 			holder.subjectCode = (TextView) convertView
 					.findViewById(R.id.projects_subject_code);
@@ -54,7 +55,7 @@ public class HomeWorksAdapter extends ArrayAdapter<Projects> {
 		Projects projects=getItem(position);
 		holder.subjectCode.setText(projects.getCourse_Code());
 		holder.subjectname.setText(projects.getCourse_Name());
-		holder.date.setText(projects.getNotifications_DueTime());
+		holder.date.setText("Due Date :"+projects.getNotifications_DueTime());
 		return convertView;
 	}
 	

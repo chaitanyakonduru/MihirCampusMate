@@ -33,10 +33,11 @@ public class ChangePwdActivity extends Activity implements OnClickListener{
 	private EditText oldPwd;
 	private EditText newPwd;
 	private EditText confPwd;
-	private TextView patientName;
-	private TextView hospitalName;
-	private ImageView schoolLogo;
+	
 	private AuthenticateResponse authenticateResponse;
+	private TextView studentName;
+	private TextView campusName;
+	private ImageView logo;
 	
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +46,19 @@ public class ChangePwdActivity extends Activity implements OnClickListener{
 		initializeViews();
 		MihirApp app=(MihirApp) getApplication();
 		authenticateResponse=app.getCurUserInfo();
-//		Utils.setActionBar(hospitalName,patientName,curPatient,schoolLogo);
+		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
 		
 	}
 	private  void initializeViews() {
-		schoolLogo = (ImageView) findViewById(R.id.school_logo);
 		mmsId=(EditText)findViewById(R.id.changepwd_edittext_mmsid);
 		oldPwd=(EditText)findViewById(R.id.change_pwd_edittext_oldpwd);
 		newPwd=(EditText)findViewById(R.id.change_pwd_edittext_newpwd);
 		confPwd=(EditText)findViewById(R.id.change_pwd_edittext_confpwd);
-		patientName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
-		hospitalName=(TextView)findViewById(R.id.action_tv_hospital_name);
 		findViewById(R.id.change_pwd_btn_change).setOnClickListener(ChangePwdActivity.this);
 		findViewById(R.id.mms_ad_image).setOnClickListener(this);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
 	}
 
 	public void onClick(View v) {

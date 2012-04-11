@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -37,7 +38,11 @@ public class GradesActivity extends Activity implements OnClickListener {
 	private ViewFlipper flipper;
 	private Button prevButton;
 	private Button nextButton;
-
+	private List<Semester> list;
+	private TextView examName;
+	private TextView studentName;
+	private TextView campusName;
+	private ImageView logo;
 	private MihirApp app;
 
 	private AuthenticateResponse authenticateResponse;
@@ -49,6 +54,7 @@ public class GradesActivity extends Activity implements OnClickListener {
 		app = (MihirApp) getApplication();
 		authenticateResponse = app.getCurUserInfo();
 		initializeViews();
+		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
 		SoapServiceManager manager = SoapServiceManager
 				.getInstance(GradesActivity.this);
 		showDialog(Constants.PROGRESSDIALOG);
@@ -72,13 +78,7 @@ public class GradesActivity extends Activity implements OnClickListener {
 			{
 				Utils.showDialog(gradesResponse.getErrorMsg(), GradesActivity.this, true);
 			}
-			/*
-			 * } catch (ClassCastException cce) {
-			 * Utils.showToast("Unable to process your request",
-			 * GradesActivity.this); Log.v(TAG, cce.getMessage());
-			 * 
-			 * }
-			 */
+		
 		}
 
 		public void onFailure(String errorMessge) {
@@ -88,9 +88,7 @@ public class GradesActivity extends Activity implements OnClickListener {
 		}
 	};
 
-	private List<Semester> list;
-
-	private TextView examName;
+	
 
 	private void initializeViews() {
 		flipper = (ViewFlipper) findViewById(R.id.viewflipper);
@@ -99,6 +97,10 @@ public class GradesActivity extends Activity implements OnClickListener {
 		prevButton.setOnClickListener(GradesActivity.this);
 		nextButton = (Button) findViewById(R.id.marks_btn_nextbutton);
 		nextButton.setOnClickListener(GradesActivity.this);
+		findViewById(R.id.sharebutton).setOnClickListener(GradesActivity.this);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
 	}
 
 	private void processResposne(GradesResponse gradesResponse) {
@@ -202,11 +204,32 @@ public class GradesActivity extends Activity implements OnClickListener {
 			flipper.showPrevious();
 			setSemesterName();
 			break;
-
+		case R.id.sharebutton:
+			composeText();
 		default:
 			break;
 
 		}
+	}
+
+	private void composeText() {
+
+		int index = flipper.getChildCount()
+		- (flipper.getDisplayedChild() + 1);
+		Semester term = list.get(index);
+		String text="Student Name :"+authenticateResponse.getStudent_Name()+"\n"
+						+"Semester Name :"+term.getSemesterName()+"\n"+
+						"Marks are as Follows"+"\n";
+						for(Course course:term.getCourseList())
+						{
+							text+=course.getCourseName()+"   \t   "+course.getCourseGrade()+"\n";
+						}
+						
+						String subject=authenticateResponse.getStudent_Name()+"'s "+term.getSemesterName()+" Grades Details";
+						Utils.sendMail(text, subject, GradesActivity.this);
+						
+		
+
 	}
 
 }

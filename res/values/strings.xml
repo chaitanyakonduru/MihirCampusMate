@@ -19,7 +19,7 @@
     <string name="forgotpwd">Forgot Password</string>
     <string name="remember_me">Remember me</string>
     <string name="description">Description</string>
-    <string name="username">User Name :</string>
+    <string name="username">User Name</string>
     <string name="logout_time">Logout Time</string>
     <string name="change_pwd">Change Password</string>
     <string name="signout">  Signout  </string>

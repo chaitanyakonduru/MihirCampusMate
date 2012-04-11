@@ -12,7 +12,6 @@ import android.util.Log;
 import com.mms.mcm.custom.Constants;
 
 public final class SoapConn {
-
 	private static final String TAG = "SoapConnection";
 	private static final String URL = "http://mihircampusmate.elasticbeanstalk.com/services/MihirCampusMateSrv?wsdl";
 	private static HttpTransportSE httpTransportSE;
@@ -33,7 +32,7 @@ public final class SoapConn {
 			Log.v("request", request.toString());
 			httpTransportSE.call(actionName, envelope);
 			Object object = envelope.bodyIn;
-			
+		
 			if (object != null) {
 				Log.v(TAG, "response::::" + object.toString());
 				Message.obtain(mihirHandler, Constants.SUCCESS, object)

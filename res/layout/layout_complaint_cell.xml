@@ -51,15 +51,16 @@
                         android:text=" :  "
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
-
+
                     <TextView
-                        android:id="@+id/hospital_cont_hosp1"
+                        android:id="@+id/campus_emergency_no"
                         android:layout_width="wrap_content"
                         android:ellipsize="end"
                         android:linksClickable="true"
                         android:text="108"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
+
                 </TableRow>
 
                 <TableRow
@@ -81,14 +82,15 @@
                         android:text=" :  "
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
-
+
                     <TextView
-                        android:id="@+id/hospital_cont_hosp1"
+                        android:id="@+id/campus_police_no"
                         android:layout_width="wrap_content"
                         android:ellipsize="end"
                         android:text="9885026526"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
+
                 </TableRow>
 
                 <TableRow
@@ -96,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:paddingTop="5dip" >
-
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
@@ -110,14 +112,15 @@
                         android:text=" :  "
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
-
+
                     <TextView
-                        android:id="@+id/hospital_cont_hosp1"
+                        android:id="@+id/local_police_no"
                         android:layout_width="wrap_content"
                         android:ellipsize="end"
                         android:text="100"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
+
                 </TableRow>
             </TableLayout>
         </LinearLayout>

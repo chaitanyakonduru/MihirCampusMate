@@ -13,15 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mms.mcm.R;
+import com.mms.mcm.custom.Utils;
 import com.mms.mcm.model.AuthenticateResponse;
 
 public class HomeActivity extends Activity implements OnClickListener {
 	private static final String TAG = "Home Activity";
-	private TextView hospitalName;
-	private ImageView hospitalLogo;
+	private TextView campusName;
+	private ImageView logo;
 	private Button singout;
 	private MihirApp app;
 	private AuthenticateResponse curUser;
+	private TextView studentName;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		app = (MihirApp) getApplication();
 		curUser = app.getCurUserInfo();
 		initViews();
-//		Utils.setActionBar(hospitalName, null, curUser, hospitalLogo);
+		Utils.setActionBar(campusName, null, curUser, logo);
 		
 		try {
 			Log.v(TAG, curUser.getStudent_ID());
@@ -57,10 +59,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		singout = (Button) findViewById(R.id.action_bar_signout);
 		singout.setVisibility(View.VISIBLE);
 		singout.setOnClickListener(HomeActivity.this);
-		
-		hospitalName = (TextView) findViewById(R.id.action_tv_hospital_name);
-//		hospitalName.setText(curUser.getmHospital_Name());
-		hospitalLogo = (ImageView) findViewById(R.id.school_logo);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
 	}
 
 	public void onClick(View v) {

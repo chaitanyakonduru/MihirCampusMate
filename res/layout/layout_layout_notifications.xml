@@ -50,15 +50,22 @@
                             android:id="@+id/campus_calendar"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
+                                android:background="@drawable/menu_bg"
                             android:orientation="vertical" >
-
+							<LinearLayout
+                            android:id="@+id/campus_calendar"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                                android:background="@drawable/watermark"
+                            android:orientation="vertical" >
+                            
                             <ListView
                                 android:id="@+id/campus_calendar_listview"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/menu_bg"
                                 android:cacheColorHint="#00000000" >
                             </ListView>
+                        </LinearLayout>
                         </LinearLayout>
      
                             <!-- Notifications Information -->
@@ -67,15 +74,22 @@
                             android:id="@+id/notification"
                             android:layout_width="fill_parent"
                             android:layout_height="match_parent"
+                                android:background="@drawable/menu_bg"
                             android:orientation="vertical" >
-                          
+						                        <LinearLayout
+                            android:id="@+id/notification"
+                            android:layout_width="fill_parent"
+                            android:layout_height="match_parent"
+                                android:background="@drawable/watermark"
+                            android:orientation="vertical" >
+                            
 						 <ListView
                                 android:id="@+id/notifications_listview"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/menu_bg"
                                 android:cacheColorHint="#00000000" >
                             </ListView>
+                            </LinearLayout>
                         </LinearLayout>
                     </FrameLayout>
                 </LinearLayout>

@@ -12,6 +12,10 @@ public class Books {
 	public String getBook_ID() {
 		return Book_ID;
 	}
+	public String toString() {
+	
+		return Book_Title;
+	}
 	public void setBook_ID(String bookID) {
 		Book_ID = bookID;
 	}

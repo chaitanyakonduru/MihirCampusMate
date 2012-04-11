@@ -23,20 +23,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="@drawable/menu_bg"
             android:orientation="vertical" >
 
-            <ListView
-                android:id="@+id/list"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:cacheColorHint="#00000000" >
-            </ListView>
+                android:background="@drawable/watermark"
+                android:orientation="vertical" >
+
+                <ListView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cacheColorHint="#00000000" >
+                </ListView>
+            </LinearLayout>
         </LinearLayout>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:background="#00000000" >
 
             <LinearLayout
@@ -67,12 +76,14 @@
                         android:text="@string/isbn_no" />
 
                     <EditText
+                        android:id="@+id/isbnno"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/editbox_background"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text=" 81-7366-210-X" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -87,15 +98,18 @@
                         android:text="@string/book_id" />
 
                     <EditText
+                        android:id="@+id/mms_book_id"
                         android:layout_width="0dip"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/editbox_background"
                         android:maxLines="1"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="MB00000001" />
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/book_search"
                     style="@style/buttonstyle"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dip"

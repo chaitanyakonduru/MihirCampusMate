@@ -24,18 +24,20 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 		OnItemSelectedListener {
 
 	private static final String TAG = null;
-	private TextView patientName;
-	private TextView hospitalName;
 	private String[] days_hours = { "Days", "Hour", "Never" };
 	private Spinner spinner;
 	private Spinner number_spinner;
-	private Object currentUser;
-	private ImageView schoolLogo;
 	private AuthenticateResponse authenticateResponse;
+	private TextView studentName;
+	private TextView campusName;
+	private ImageView logo;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_myaccount);
+		MihirApp app = (MihirApp) getApplication();
+		authenticateResponse= app.getCurUserInfo();
+		
 		initializeViews();
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -44,27 +46,32 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 
-		MihirApp app = (MihirApp) getApplication();
-		authenticateResponse= app.getCurUserInfo();
 		
-		((TextView) findViewById(R.id.myaccount_tv_username))
-				.setText(getUserName());
+		
+		
 //		Utils.setActionBar(hospitalName, patientName, curPatient, schoolLogo);
 		spinner.setSelection(2);
 	}
 
 	private void initializeViews() {
 
-		schoolLogo = (ImageView) findViewById(R.id.school_logo);
 		findViewById(R.id.myaccount_btn_changepwd).setOnClickListener(
 				MyAccountActivity.this);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
+		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
 		findViewById(R.id.mms_ad_image).setOnClickListener(this);
-		patientName = (TextView) findViewById(R.id.action_bar_tv_patient_name);
-		hospitalName = (TextView) findViewById(R.id.action_tv_hospital_name);
 		spinner = (Spinner) findViewById(R.id.myaccount_spinner_logouttime);
 		number_spinner = (Spinner) findViewById(R.id.numbers_spinner);
 		spinner.setOnItemSelectedListener(this);
 		number_spinner.setOnItemSelectedListener(this);
+		((TextView) findViewById(R.id.myaccount_tv_username))
+		.setText(getUserName());
+		((TextView)findViewById(R.id.credits_achieved)).setText(authenticateResponse.getCredits_Acheived());
+		((TextView)findViewById(R.id.myacc_cgpa)).setText(authenticateResponse.getcGPA());
+		((TextView)findViewById(R.id.myacc_feedue)).setText(authenticateResponse.getFee_Due());
+		((TextView)findViewById(R.id.myacc_duetime)).setText(authenticateResponse.getFee_DueDate());
 	}
 
 	private String getUserName() {

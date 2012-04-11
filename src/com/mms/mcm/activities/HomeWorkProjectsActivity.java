@@ -8,14 +8,21 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.mms.mcm.R;
 import com.mms.mcm.custom.Constants;
 import com.mms.mcm.custom.HomeWorksAdapter;
+import com.mms.mcm.custom.Utils;
 import com.mms.mcm.model.AuthenticateResponse;
 import com.mms.mcm.model.HomeWorkProjectsResponse;
 import com.mms.mcm.model.Projects;
@@ -23,13 +30,16 @@ import com.mms.mcm.network.NetworkCallback;
 import com.mms.mcm.network.Parser;
 import com.mms.mcm.network.SoapServiceManager;
 
-public class HomeWorkProjectsActivity extends Activity{
+public class HomeWorkProjectsActivity extends Activity implements OnItemClickListener{
 	
 	private AuthenticateResponse authenticateResponse;
 	protected String TAG;
 	
 	private ListView listview;
 	protected List<Projects> prjctsList;
+	private TextView studentName;
+	private TextView campusName;
+	private ImageView logo;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,6 +47,7 @@ public class HomeWorkProjectsActivity extends Activity{
 		initializeViews();
 		MihirApp app=(MihirApp) getApplication();
 		authenticateResponse=app.getCurUserInfo();
+		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
 		SoapServiceManager manager=SoapServiceManager.getInstance(HomeWorkProjectsActivity.this);
 		showDialog(Constants.PROGRESSDIALOG);
 		manager.sendGetHomeWorkProjectsRequest(authenticateResponse.getStudent_ID(), callback);
@@ -44,6 +55,10 @@ public class HomeWorkProjectsActivity extends Activity{
 
 	private void initializeViews() {
 		listview=(ListView)findViewById(R.id.home_work_projects_listview);
+		listview.setOnItemClickListener(HomeWorkProjectsActivity.this);
+		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
+		logo = (ImageView) findViewById(R.id.school_logo);
 	}
 	
 	
@@ -101,5 +116,12 @@ public class HomeWorkProjectsActivity extends Activity{
 			Log.v(TAG, errorMessge);
 		}
 	};
+
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		
+		Intent intent=new Intent(HomeWorkProjectsActivity.this,ProjectDetailsActivity.class);
+		intent.putExtra("myObject", prjctsList.get(arg2));
+		startActivity(intent);
+	}
 
 }

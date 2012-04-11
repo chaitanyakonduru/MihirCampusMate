@@ -27,15 +27,23 @@
             android:layout_weight="1"
             android:background="@drawable/menu_bg"
             android:orientation="vertical" >
-            <include layout="@layout/books_in_possession_list_layout"/>
-            <!--<ListView 
+             <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_weight="0.5"
+            android:background="@drawable/watermark"
+            android:orientation="vertical" >
+          <ListView 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:cacheColorHint="#00000000"
-                android:id="@+id/possession_books_listview"
+                android:id="@+id/books_possession_listview"
                 
                 ></ListView>
-    --></LinearLayout>
+          </LinearLayout>
+  </LinearLayout>
     </LinearLayout>
     <include layout="@layout/mms_ad"/>
 </LinearLayout>

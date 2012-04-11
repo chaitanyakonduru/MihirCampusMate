@@ -12,7 +12,7 @@
         android:orientation="horizontal" >
 
         <ImageView
-            android:src="@drawable/logo"
+            android:src="@drawable/icon"
             android:id="@+id/school_logo"
             android:layout_width="40dip"
             android:layout_height="40dip"

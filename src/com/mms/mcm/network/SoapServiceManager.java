@@ -35,8 +35,7 @@ public final class SoapServiceManager {
 				: serviceManager;
 	}
 	public SoapServiceManager(Context context) {
-		executorService = Executors.newCachedThreadPool(new NamedThreadFactory(
-				"mihir"));
+		executorService = Executors.newSingleThreadExecutor();
 	}
 
 	public void sendGetGradesRequest(String student_Id,NetworkCallback<Object> callback)
@@ -228,7 +227,7 @@ public final class SoapServiceManager {
 
 	}
 
-	public void sendBooksOnHoldRequest(int student_ID,
+	public void sendBooksOnHoldRequest(String student_ID,
 			NetworkCallback<Object> callback) {
 		String methodName = "BooksOnHold";
 		final String actionName = SOAP_ACTION_BOOKS_ON_HOLD;
@@ -248,16 +247,17 @@ public final class SoapServiceManager {
 
 	}
 	
-	public void sendBooksOnPossessionRequest(int student_ID,
+	public void sendBooksOnPossessionRequest(String student_ID,
 			NetworkCallback<Object> callback) {
+		
 		String methodName = "BooksOnPossession";
 		final String actionName = SOAP_ACTION_BOOKSPOSSESSION;
 		final SoapObject requestObj = new SoapObject(NAMESPACE, methodName);
 
 		PropertyInfo info = new PropertyInfo();
 		info.setNamespace(NAMESPACE);
-		info.setName("Student_ID");
-		info.setValue(student_ID);
+		info.setName("Student_Id");
+		info.setValue(Integer.parseInt(student_ID));
 		requestObj.addProperty(info);
 		final MihirHandler handler = new MihirHandler(callback);
 		executorService.execute(new Runnable() {

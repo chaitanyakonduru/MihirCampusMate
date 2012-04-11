@@ -1,6 +1,12 @@
 package com.mms.mcm.model;
 
-public class Projects {
+import java.util.ArrayList;
+import java.util.List;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Projects implements Parcelable{
 	
 	private String  Semister_Name;
 	private String  Course_Code;
@@ -78,6 +84,61 @@ public class Projects {
 	@Override
 	public String toString() {
 		return Notifications_Title;
+	}
+
+	public Projects()
+	{
+		
+	}
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+
+		List<String> ll = new ArrayList<String>();
+		ll.add(this.Course_Code);
+		ll.add(this.Course_Grade);
+		ll.add(this.Course_Name);
+		ll.add(this.Notification_Id);
+		ll.add(this.Notifications_Comments);
+		ll.add(this.Notifications_Details);
+		ll.add(this.Notifications_DueTime);
+		ll.add(this.Notifications_Title);
+		ll.add(this.Notifications_Type);
+		ll.add(this.Semister_Name);
+		dest.writeStringList(ll);
+
+	}
+
+	public Projects(Parcel parcel) {
+		List<String> list1 = new ArrayList<String>();
+		parcel.readStringList(list1);
+		this.Course_Code = list1.get(0);
+		this.Course_Grade = list1.get(1);
+		this.Course_Name = list1.get(2);
+		this.Notification_Id = list1.get(3);
+		this.Notifications_Comments = list1.get(4);
+		this.Notifications_Details= list1.get(5);
+		this.Notifications_DueTime= list1.get(6);
+		this.Notifications_Title= list1.get(7);
+		this.Notifications_Type= list1.get(8);
+		this.Semister_Name= list1.get(9);
+	}
+
+	public static final Creator<Projects> CREATOR = new Creator<Projects>() {
+
+		public Projects createFromParcel(Parcel source) {
+			return new Projects(source);
+		}
+
+		public Projects[] newArray(int size) {
+			return new Projects[size];
+		}
+	};
+
+	public static Creator<Projects> getCreator() {
+		return CREATOR;
+	}
+	public int describeContents() {
+		return 0;
 	}
 
 }

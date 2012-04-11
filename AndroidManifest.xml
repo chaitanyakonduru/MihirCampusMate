@@ -41,6 +41,10 @@
         <activity android:name=".activities.MyAccountActivity"></activity>
         <activity android:name=".activities.ChangePwdActivity"></activity>
         <activity android:name=".activities.ComplaintCellActivity"></activity>
+        <activity android:name=".activities.BookSearchActivity"></activity>
+        <activity android:name=".activities.BooksOnHoldActivity"></activity>
+        <activity android:name=".activities.BooksOnPossessionActivity"></activity>
+        <activity android:name=".activities.ProjectDetailsActivity"></activity>
     </application>
 
 </manifest>
