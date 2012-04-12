@@ -31,13 +31,14 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 	private TextView studentName;
 	private TextView campusName;
 	private ImageView logo;
+	private SharedPreferences mMyPrefs;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_myaccount);
 		MihirApp app = (MihirApp) getApplication();
-		authenticateResponse= app.getCurUserInfo();
-		
+		authenticateResponse = app.getCurUserInfo();
+
 		initializeViews();
 
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -45,19 +46,19 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 		adapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-
+		mMyPrefs = this.getSharedPreferences("userPrefs", MODE_WORLD_WRITEABLE);
+		int mode=mMyPrefs.getInt("mode", 2);
+		int number = mMyPrefs.getInt("number", 0);
 		
-		
-		
-//		Utils.setActionBar(hospitalName, patientName, curPatient, schoolLogo);
-		spinner.setSelection(2);
+		spinner.setSelection(mode);
+		number_spinner.setSelection(number);
 	}
 
 	private void initializeViews() {
 
 		findViewById(R.id.myaccount_btn_changepwd).setOnClickListener(
 				MyAccountActivity.this);
-		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
+		studentName = (TextView) findViewById(R.id.action_bar_tv_patient_name);
 		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
 		logo = (ImageView) findViewById(R.id.school_logo);
 		Utils.setActionBar(campusName, studentName, authenticateResponse, null);
@@ -67,16 +68,20 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 		spinner.setOnItemSelectedListener(this);
 		number_spinner.setOnItemSelectedListener(this);
 		((TextView) findViewById(R.id.myaccount_tv_username))
-		.setText(getUserName());
-		((TextView)findViewById(R.id.credits_achieved)).setText(authenticateResponse.getCredits_Acheived());
-		((TextView)findViewById(R.id.myacc_cgpa)).setText(authenticateResponse.getcGPA());
-		((TextView)findViewById(R.id.myacc_feedue)).setText(authenticateResponse.getFee_Due());
-		((TextView)findViewById(R.id.myacc_duetime)).setText(authenticateResponse.getFee_DueDate());
+				.setText(getUserName());
+		((TextView) findViewById(R.id.credits_achieved))
+				.setText(authenticateResponse.getCredits_Acheived());
+		((TextView) findViewById(R.id.myacc_cgpa)).setText(authenticateResponse
+				.getcGPA());
+		((TextView) findViewById(R.id.myacc_feedue))
+				.setText(authenticateResponse.getFee_Due());
+		((TextView) findViewById(R.id.myacc_duetime))
+				.setText(authenticateResponse.getFee_DueDate());
 	}
 
 	private String getUserName() {
 		String username = "";
-			username = authenticateResponse.getStudent_Name();
+		username = authenticateResponse.getStudent_Name();
 		return username;
 	}
 
@@ -121,7 +126,7 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 			adapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			number_spinner.setAdapter(adapter);
-			
+
 		}
 
 		else if (arg0.getItemAtPosition(arg2).toString().equals("Hour")) {
@@ -153,17 +158,20 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 	protected void onPause() {
 		super.onPause();
 		Log.v(TAG, "On Pause");
-		
+
 	}
 
 	private void editPreferences() {
+		int number=0;
 		Long logoutTime = 0L;
 		if (spinner.getSelectedItem().toString().equalsIgnoreCase("Days")) {
+			number=0;
 			logoutTime = System.currentTimeMillis()
 					+ Long.valueOf(number_spinner.getSelectedItem().toString())
 					* 24 * 60 * 60 * 1000;
 		} else if (spinner.getSelectedItem().toString().equalsIgnoreCase(
-				"Hours")) {
+				"Hour")) {
+			number=1;
 			if (number_spinner.getSelectedItem() != null) {
 				logoutTime = System.currentTimeMillis()
 						+ Long.valueOf(number_spinner.getSelectedItem()
@@ -171,12 +179,15 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 			}
 		} else if (spinner.getSelectedItem().toString().equalsIgnoreCase(
 				"Never")) {
-			logoutTime = System.currentTimeMillis()+14*24*60*60*1000;
+			number=2;
+			logoutTime = System.currentTimeMillis() + 14 * 24 * 60 * 60 * 1000;
 		}
 
 		LoginActivity.mMyPrefs = this.getSharedPreferences("userPrefs",
 				MODE_WORLD_WRITEABLE);
 		SharedPreferences.Editor prefsEditor = LoginActivity.mMyPrefs.edit();
+		prefsEditor.putInt("mode",number);
+		prefsEditor.putInt("number", Integer.parseInt(number_spinner.getSelectedItem()!=null?number_spinner.getSelectedItem().toString():"0"));
 		prefsEditor.putLong(LoginActivity.LOGOUTTIME, logoutTime);
 		prefsEditor.commit();
 	}

@@ -62,7 +62,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dip"
                             android:hint="MMS ID"
-                            android:text="MU12000001"
                             android:singleLine="true" >
                         </EditText>
 
@@ -71,7 +70,6 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
-                            android:text="98765"
                             android:password="true"
                             android:singleLine="true" />
 

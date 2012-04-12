@@ -78,6 +78,16 @@
             android:textColor="#ffffff"
             android:textStyle="bold" >
         </Button>
+         <ImageView
+            android:id="@+id/action_bar_image_add"
+            android:src="@drawable/ic_input_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dip"
+            android:visibility="gone"
+            >
+        </ImageView>
     </LinearLayout>
 
 </LinearLayout>

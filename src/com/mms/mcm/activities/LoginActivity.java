@@ -1,7 +1,12 @@
 package com.mms.mcm.activities;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 
 import org.ksoap2.serialization.SoapObject;
 
@@ -36,6 +41,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	public static final String USERNAME = "username";
 	public static final String LOGOUTTIME = "logouttime";
 	public static final String USERDATA = "userdata";
+	private MihirApp app;
 	public static SharedPreferences mMyPrefs;
 	private EditText mUserName;
 	private EditText mPassword;
@@ -47,10 +53,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_login);
 		initializeViews();
-
-		/*mMyPrefs = this.getSharedPreferences("userPrefs", MODE_WORLD_WRITEABLE);
-//		mUserName.setText(mMyPrefs.getString(USERNAME, ""));
-
+		app=(MihirApp) getApplication();
+		mMyPrefs = this.getSharedPreferences("userPrefs", MODE_WORLD_WRITEABLE);
+		mUserName.setText(mMyPrefs.getString(USERNAME, ""));
 		Long logoutTime = mMyPrefs.getLong(LOGOUTTIME, 0L);
 		if (logoutTime > System.currentTimeMillis()) {
 		ObjectInputStream ois=null;
@@ -105,7 +110,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				e.printStackTrace();
 			}
 		}
-		}*/
+		}
 		
 		
 /*		if (logoutTime > System.currentTimeMillis()) {
@@ -213,10 +218,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 				SoapObject responceObject = (SoapObject) responseObj;
 				authenticate = Parser.parseAuthenticateResponse(responceObject);
-				/*fileOutputStream=openFileOutput("persistentData.txt", MODE_PRIVATE);
+				fileOutputStream=openFileOutput("persistentData.txt", MODE_PRIVATE);
 				objectOutputStream = new ObjectOutputStream(fileOutputStream);
 				objectOutputStream.writeObject(authenticate);
-				fileOutputStream.flush();*/
+				fileOutputStream.flush();
 				
 				int userType = authenticate.getUserType();
 				if (userType != Constants.INVALIDUSER) {
@@ -229,7 +234,12 @@ public class LoginActivity extends Activity implements OnClickListener {
 				Log.v(TAG, cce.getMessage());
 			 
 			} 
-			/*finally {
+			catch(IOException ioe)
+			{
+				ioe.printStackTrace();
+			}
+			
+			finally {
 				try {
 					if (objectOutputStream != null) {
 						objectOutputStream.close();
@@ -245,7 +255,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 					e.printStackTrace();
 				}
 
-			}*/
+			}
 
 		}
 
@@ -266,7 +276,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			Log.v(TAG, errorMessge);
 		}
 	};
-	private MihirApp app;
+	
 	@Override
 	protected Dialog onCreateDialog(int id) {
 
@@ -306,7 +316,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	private void processResponseResult(AuthenticateResponse authenticate) {
 		
-		app = (MihirApp) getApplication();
+	
 		int userType = authenticate.getUserType();
 		if (authenticate.getAuthenticateMSG().equalsIgnoreCase("")) {
 			switch (userType) {
@@ -316,7 +326,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				app.setIsloggedin(true);
 				app.setCurUserInfo(authenticate);
 				startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-				
+				finish();
 				break;
 			
 			}
@@ -332,10 +342,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 	
 		super.onRestart();
 		Log.v(TAG, "+++++++ Restart+++++++++");
-		/*if(app.isIsloggedin())
+		if(app.isIsloggedin())
 		{
 			finish();
-		}*/
+		}
 	}
 	
 	protected void onResume() {

@@ -57,7 +57,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 				HomeActivity.this);
 		findViewById(R.id.mms_ad_image).setOnClickListener(this);
 		singout = (Button) findViewById(R.id.action_bar_signout);
+		
 		singout.setVisibility(View.VISIBLE);
+		singout.setText("Sign Out");
 		singout.setOnClickListener(HomeActivity.this);
 		studentName=(TextView)findViewById(R.id.action_bar_tv_patient_name);
 		campusName = (TextView) findViewById(R.id.action_tv_hospital_name);
@@ -95,9 +97,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 			clearPreferences();
 			app.setCurUserInfo(null);
 			app.setIsloggedin(false);
-			/*Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+			Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);*/
+			startActivity(intent);
 			finish();
 			break;
 		case R.id.mms_ad_image:

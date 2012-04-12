@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,6 +40,8 @@ public class BooksOnPossessionActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_books_in_possession);
 		initializeviews();
+		//Hide the Soft Input Window
+		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 		MihirApp app=(MihirApp) getApplication();
 		authenticateResponse=app.getCurUserInfo();
 		Utils.setActionBar(campusName, studentName, authenticateResponse, null);

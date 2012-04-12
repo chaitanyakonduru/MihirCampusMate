@@ -7,8 +7,18 @@ import org.ksoap2.serialization.SoapObject;
 
 public class Semester {
 
-	String semesterName;
+	String semesterName="";
+	String gpa="";
 	List<Course> courseList;
+
+	
+	public String getGpa() {
+		return gpa;
+	}
+
+	public void setGpa(String gpa) {
+		this.gpa = gpa;
+	}
 	
 	
 //	Semister_List=anyType{Semister_Name=FALL-2012; 
@@ -23,8 +33,9 @@ public class Semester {
 	public Semester(SoapObject soapObject){
 		courseList=new ArrayList<Course>();
 		semesterName = soapObject.getPropertyAsString("Semister_Name");
+		gpa=soapObject.getPropertyAsString("Semister_GPA");
 		
-		for (int i = 1; i < soapObject.getPropertyCount(); i++) {
+		for (int i = 2; i < soapObject.getPropertyCount(); i++) {
 			SoapObject courseObject = (SoapObject) soapObject.getProperty(i);
 			courseList.add(new Course(courseObject));
 		}
@@ -42,9 +53,6 @@ public class Semester {
 	public void setCourseList(List<Course> courseList) {
 		this.courseList = courseList;
 	}
-	
-	
-	
 	
 	
 }

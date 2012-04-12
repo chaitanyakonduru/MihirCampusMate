@@ -125,11 +125,10 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 			}
 			break;
 		case R.id.layout_complaint_cell_image_removename:
-			View v1=complaintNamesLayout.findViewWithTag(v.getTag());
-			complaintNamesLayout.removeView(v1);
+			complaintNamesLayout.removeView((View)v.getParent());
 			break;
 		case R.id.complaint_cell_btn_send:
-			showDialog(Constants.PROGRESSDIALOG);
+			
 			submitComplaint();
 			break;
 		case R.id.campus_emergency_no:
@@ -200,9 +199,10 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 			b=false;
 			description.setError("Please give the description");
 		}
-		
+
 		if(b)
 		{
+			showDialog(Constants.PROGRESSDIALOG);
 		SoapServiceManager manager=SoapServiceManager.getInstance(ComplaintCellActivity.this);
 		manager.sendComplaintCellDetailsRequest(authenticateResponse.getStudent_ID(), names, description.getText().toString(), callback);
 		}
@@ -211,13 +211,10 @@ public class ComplaintCellActivity extends Activity implements OnClickListener {
 	private void addView() {
 		View view = LayoutInflater.from(ComplaintCellActivity.this)
 				.inflate(R.layout.complaint_cell_name_layout, null);
-		EditText name=(EditText) view.findViewById(R.id.layout_complaint_cell_edittext_name);
 		ImageView removeNameBtn = (ImageView) view
 				.findViewById(R.id.layout_complaint_cell_image_removename);
-		removeNameBtn.setTag(i);
+		removeNameBtn.setVisibility(View.VISIBLE);
 		removeNameBtn.setOnClickListener(ComplaintCellActivity.this);
-		view.setTag(i);
-		i++;
 		complaintNamesLayout.addView(view);
 	}
 

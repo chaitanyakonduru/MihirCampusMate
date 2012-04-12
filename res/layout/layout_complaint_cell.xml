@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_weight="1"
                         android:ellipsize="end"
-                        android:text="For Life Threatining emergancies please call"
+                        android:text="For Life Threatining emergencies please call"
                         android:textColor="@android:color/white"
                         android:textStyle="bold"
                         android:typeface="serif" />

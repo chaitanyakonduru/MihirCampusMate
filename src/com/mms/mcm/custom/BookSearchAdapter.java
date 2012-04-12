@@ -15,7 +15,6 @@ import com.mms.mcm.model.Books;
 
 public class BookSearchAdapter extends ArrayAdapter<Books> {
 
-	private static final String TAG = "BookSearchAdapter";
 	private Context context;
 	private List<Books> booksList;
 	private String isFrom;
@@ -51,6 +50,7 @@ public class BookSearchAdapter extends ArrayAdapter<Books> {
 			.findViewById(R.id.hold_count0);
 			holder.holdcount1 = (TextView) convertView
 			.findViewById(R.id.hold_count1);
+			holder.return_date_tv=(TextView) convertView.findViewById(R.id.returndate_tv);
 			holder.return_date=(TextView)convertView.findViewById(R.id.return_date);
 			holder.title=(TextView)convertView.findViewById(R.id.book_title);
 			convertView.setTag(holder);
@@ -72,6 +72,7 @@ public class BookSearchAdapter extends ArrayAdapter<Books> {
 		}
 		else if(isFrom.equalsIgnoreCase("booksOnHold"))
 		{
+			holder.return_date_tv.setVisibility(View.GONE);
 			holder.return_date.setVisibility(View.GONE);
 			holder.book_status.setVisibility(View.GONE);
 			holder.holdcount1.setVisibility(View.GONE);
@@ -102,6 +103,7 @@ public class BookSearchAdapter extends ArrayAdapter<Books> {
 		private TextView holdcount1;
 		private TextView title;
 		private Button button;
+		private TextView return_date_tv;
 	}
 	
 

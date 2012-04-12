@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,6 +44,8 @@ public class GradesActivity extends Activity implements OnClickListener {
 	private TextView studentName;
 	private TextView campusName;
 	private ImageView logo;
+	private TextView gpa;
+	
 	private MihirApp app;
 
 	private AuthenticateResponse authenticateResponse;
@@ -66,10 +69,16 @@ public class GradesActivity extends Activity implements OnClickListener {
 
 		public void onSuccess(Object responseObj) {
 			removeDialog(Constants.PROGRESSDIALOG);
-			// try {
-
-			SoapObject responceObject = (SoapObject) responseObj;
-			gradesResponse = Parser.parseGradesResponse(responceObject);
+			try {
+			if(responseObj instanceof SoapObject)
+			{
+				Log.v(TAG, "++++Soap Object +++++");
+			}
+			else
+			{
+				Log.v(TAG,"++++Not a Soap Object+++++");
+			}
+			gradesResponse = Parser.parseGradesResponse((SoapObject)responseObj);
 			if(gradesResponse.getErrorMsg().equals(""))
 			{
 				processResposne(gradesResponse);
@@ -79,6 +88,16 @@ public class GradesActivity extends Activity implements OnClickListener {
 				Utils.showDialog(gradesResponse.getErrorMsg(), GradesActivity.this, true);
 			}
 		
+		}
+			catch(ClassCastException cce)
+			{
+				Utils.showToast("Unable to Process your request", GradesActivity.this);
+				cce.printStackTrace();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 		}
 
 		public void onFailure(String errorMessge) {
@@ -90,9 +109,12 @@ public class GradesActivity extends Activity implements OnClickListener {
 
 	
 
+	
+
 	private void initializeViews() {
 		flipper = (ViewFlipper) findViewById(R.id.viewflipper);
 		examName=(TextView)findViewById(R.id.marks_tv_examName);
+		gpa=(TextView)findViewById(R.id.gpa);
 		prevButton = (Button) findViewById(R.id.marks_btn_prevButton);
 		prevButton.setOnClickListener(GradesActivity.this);
 		nextButton = (Button) findViewById(R.id.marks_btn_nextbutton);
@@ -173,6 +195,7 @@ public class GradesActivity extends Activity implements OnClickListener {
 					- (flipper.getDisplayedChild() + 1);
 			Semester term = list.get(index);
 			examName.setText(term.getSemesterName());
+			gpa.setText("GPA : "+term.getGpa());
 		}
 	}
 	public void onClick(View v) {
@@ -228,8 +251,6 @@ public class GradesActivity extends Activity implements OnClickListener {
 						String subject=authenticateResponse.getStudent_Name()+"'s "+term.getSemesterName()+" Grades Details";
 						Utils.sendMail(text, subject, GradesActivity.this);
 						
-		
-
 	}
 
 }

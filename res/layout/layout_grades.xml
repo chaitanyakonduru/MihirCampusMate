@@ -103,13 +103,16 @@
                         android:textStyle="bold" />
                 </TableRow>
             </TableLayout>
-
+			<ScrollView 
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    >
             <ViewFlipper
                 android:id="@+id/viewflipper"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
             </ViewFlipper>
-
+</ScrollView>
         </LinearLayout>
         </LinearLayout>
 
@@ -124,8 +127,8 @@
             <TextView
                 style="@style/LatestUpdatesTextViews"
                 android:gravity="right"
+                android:id="@+id/gpa"
                 android:paddingRight="20dip"
-                android:text="GPA : 3.60"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

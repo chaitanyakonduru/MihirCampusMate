@@ -7,6 +7,7 @@ import org.ksoap2.serialization.SoapObject;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -37,7 +39,7 @@ public class LibraryActivity extends Activity implements OnClickListener,
 
 	protected static final String TAG = "Library Activity";
 	private ListView librarylistview;
-	private String[] library_items = { "Books on Hold", "Books on Possession" };
+	private String[] library_items = { "Books on Hold", "Books In Possession" };
 	private EditText isbnNo;
 	private EditText book_id;
 	private TextView studentName;
@@ -168,7 +170,11 @@ public class LibraryActivity extends Activity implements OnClickListener,
 	}
 
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-
+		//To hide the KeyBoard when Clicked on Item
+		
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+         imm.hideSoftInputFromWindow(librarylistview.getApplicationWindowToken(), 0);
+         
 		if(arg2==0)
 		{
 			startActivity(new Intent(LibraryActivity.this,BooksOnHoldActivity.class));
