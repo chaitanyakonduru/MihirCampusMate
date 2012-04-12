@@ -6,7 +6,6 @@ import android.app.Application;
 
 public final class MihirApp extends Application {
 	
-	
 	private AuthenticateResponse authenticateResponse;
 	private boolean isloggedin=false;
 	private static MihirApp app;
@@ -31,8 +30,5 @@ public final class MihirApp extends Application {
 	public void setCurUserInfo( AuthenticateResponse response) {
 		authenticateResponse= response;
 	}
-	
-	
-	
 
 }

@@ -20,14 +20,14 @@
         <TextView 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Subject Name :"
+            android:text="Course Code :"
             android:textColor="#ffff00"
             />
-
+
         <TextView
-            android:id="@+id/projects_subname"
-            android:singleLine="true"
+            android:id="@+id/projects_course_code"
             style="@style/LatestUpdatesTextViews"
+            android:singleLine="true"
             android:text="Science"
             android:textStyle="bold" />
 

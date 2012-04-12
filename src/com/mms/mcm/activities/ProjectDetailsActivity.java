@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.mms.mcm.R;
@@ -19,6 +20,7 @@ private Projects project;
 private TextView studentName;
 private TextView campusName;
 private ImageView logo;
+private String isFrom;
 
 protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -39,6 +41,17 @@ protected void onCreate(Bundle savedInstanceState) {
 	if(bundle!=null&&bundle.containsKey("myObject"))
 	{
 		project=(Projects) bundle.get("myObject");
+		isFrom=bundle.getString("isfrom");
+		if(isFrom.equalsIgnoreCase("HomeWorkProjects"))
+		{
+			((TableRow)findViewById(R.id.notification_title_table_row)).setVisibility(View.GONE);
+			((TableRow)findViewById(R.id.notification_type_table_row)).setVisibility(View.VISIBLE);
+		}
+		else if(isFrom.equalsIgnoreCase("notifications"))
+		{
+			((TableRow)findViewById(R.id.notification_title_table_row)).setVisibility(View.VISIBLE);
+			((TableRow)findViewById(R.id.notification_type_table_row)).setVisibility(View.GONE);
+		}
 		
 		((TextView)findViewById(R.id.course_code)).setText(project.getCourse_Code());
 		((TextView)findViewById(R.id.course_name)).setText(project.getCourse_Name());

@@ -157,6 +157,7 @@ public class NotificationsActivity extends TabActivity implements OnTabChangeLis
 								Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
 //								Utils.showToast(""+arg2, NotificationsActivity.this);
 								intent.putExtra("myObject", prjctsList.get(arg2));
+								intent.putExtra("isfrom", "notifications");
 								startActivity(intent);
 								
 							}
@@ -210,6 +211,7 @@ private NetworkCallback<Object> campuscalendarCallBack=new NetworkCallback<Objec
 								Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
 //								Utils.showToast(""+arg2, NotificationsActivity.this);
 								intent.putExtra("myObject", prjctsList.get(arg2));
+								intent.putExtra("isfrom", "notifications");
 								startActivity(intent);
 								
 							}
@@ -266,6 +268,7 @@ private NetworkCallback<Object> campuscalendarCallBack=new NetworkCallback<Objec
 		Intent intent=new Intent(NotificationsActivity.this,ProjectDetailsActivity.class);
 //		Utils.showToast(""+arg2, NotificationsActivity.this);
 		intent.putExtra("myObject", prjctsList.get(arg2));
+		
 		startActivity(intent);
 		
 	}

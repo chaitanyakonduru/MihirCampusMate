@@ -121,6 +121,7 @@ public class HomeWorkProjectsActivity extends Activity implements OnItemClickLis
 		
 		Intent intent=new Intent(HomeWorkProjectsActivity.this,ProjectDetailsActivity.class);
 		intent.putExtra("myObject", prjctsList.get(arg2));
+		intent.putExtra("isfrom", "HomeWorkProjects");
 		startActivity(intent);
 	}
 

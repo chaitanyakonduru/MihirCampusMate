@@ -118,6 +118,7 @@ public class HomeActivity extends Activity implements OnClickListener {
 		SharedPreferences.Editor prefsEditor = LoginActivity.mMyPrefs.edit();
 		prefsEditor.putLong(LoginActivity.LOGOUTTIME, 0L);
 		prefsEditor.putString("Response", "");
+		prefsEditor.remove("mode");
 		prefsEditor.commit();
 	}
 

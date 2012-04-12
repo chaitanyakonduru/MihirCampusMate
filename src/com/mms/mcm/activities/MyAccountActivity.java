@@ -80,10 +80,11 @@ public class MyAccountActivity extends Activity implements OnClickListener,
 	}
 
 	private String getUserName() {
-		String username = "";
-		username = authenticateResponse.getStudent_Name();
-		return username;
+		
+		return authenticateResponse.getStudent_Name();
 	}
+
+
 
 	final NetworkCallback<Object> adcallback = new NetworkCallback<Object>() {
 

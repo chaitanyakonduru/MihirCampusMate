@@ -41,10 +41,8 @@ public class HomeWorksAdapter extends ArrayAdapter<Projects> {
 					null);
 			
 			holder = new ViewHolder();
-			holder.subjectCode = (TextView) convertView
-					.findViewById(R.id.projects_subject_code);
-			holder.subjectname = (TextView) convertView
-					.findViewById(R.id.projects_subname);
+			holder.course_code = (TextView) convertView
+					.findViewById(R.id.projects_course_code);
 			holder.date=(TextView)convertView.findViewById(R.id.projects_due_date);
 			convertView.setTag(holder);
 		} else {
@@ -53,8 +51,7 @@ public class HomeWorksAdapter extends ArrayAdapter<Projects> {
 		}
 
 		Projects projects=getItem(position);
-		holder.subjectCode.setText(projects.getCourse_Code());
-		holder.subjectname.setText(projects.getCourse_Name());
+		holder.course_code.setText(projects.getCourse_Code());
 		holder.date.setText("Due Date :"+projects.getNotifications_DueTime());
 		return convertView;
 	}
@@ -67,8 +64,7 @@ public class HomeWorksAdapter extends ArrayAdapter<Projects> {
 
 	private static class ViewHolder {
 		private TextView date;
-		private TextView subjectname;
-		private TextView subjectCode;
+		private TextView course_code;
 	}
 	
 

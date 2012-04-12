@@ -65,14 +65,15 @@ public final class R {
         public static final int right_arrow_active=0x7f020030;
         public static final int right_arrow_inactive=0x7f020031;
         public static final int right_tab_indicator=0x7f020032;
-        public static final int share_button_over=0x7f020033;
-        public static final int sharebtn=0x7f020034;
-        public static final int sharebutton_out=0x7f020035;
-        public static final int splash_screen=0x7f020036;
-        public static final int watermark=0x7f020037;
+        public static final int screen_progress_frame=0x7f020033;
+        public static final int share_button_over=0x7f020034;
+        public static final int sharebtn=0x7f020035;
+        public static final int sharebutton_out=0x7f020036;
+        public static final int splash_screen=0x7f020037;
+        public static final int watermark=0x7f020038;
     }
     public static final class id {
-        public static final int TableRow01=0x7f070056;
+        public static final int TableRow01=0x7f07005a;
         public static final int TableRow04=0x7f070049;
         public static final int action_bar_image_add=0x7f070004;
         public static final int action_bar_signout=0x7f070003;
@@ -132,10 +133,10 @@ public final class R {
         public static final int marks_btn_nextbutton=0x7f07002a;
         public static final int marks_btn_prevButton=0x7f070028;
         public static final int marks_row=0x7f07002d;
-        public static final int marks_row_parent=0x7f07005f;
+        public static final int marks_row_parent=0x7f070061;
         public static final int marks_tv_examName=0x7f070029;
         public static final int mihir_productname=0x7f070002;
-        public static final int mms_ad_image=0x7f07005e;
+        public static final int mms_ad_image=0x7f070060;
         public static final int mms_book_id=0x7f070041;
         public static final int myacc_cgpa=0x7f07004d;
         public static final int myacc_duetime=0x7f07004f;
@@ -146,29 +147,31 @@ public final class R {
         public static final int myaccount_spinner_logouttime=0x7f070051;
         public static final int myaccount_tv_username=0x7f07004b;
         public static final int notification=0x7f07003d;
-        public static final int notification_comments=0x7f07005d;
-        public static final int notification_details=0x7f07005c;
-        public static final int notification_due_time=0x7f07005a;
-        public static final int notification_title=0x7f070058;
-        public static final int notification_type=0x7f070057;
+        public static final int notification_comments=0x7f07005f;
+        public static final int notification_details=0x7f07005e;
+        public static final int notification_due_time=0x7f07005c;
+        public static final int notification_title=0x7f070056;
+        public static final int notification_title_table_row=0x7f070055;
+        public static final int notification_type=0x7f070058;
+        public static final int notification_type_table_row=0x7f070057;
         public static final int notifications_listview=0x7f07003e;
         public static final int numbers_spinner=0x7f070052;
-        public static final int prescription_det_trow_qty=0x7f07005b;
-        public static final int prescription_det_trow_size=0x7f070059;
+        public static final int prescription_det_trow_qty=0x7f07005d;
+        public static final int prescription_det_trow_size=0x7f07005b;
+        public static final int projects_course_code=0x7f070010;
         public static final int projects_due_date=0x7f070011;
         public static final int projects_subject_code=0x7f07000f;
-        public static final int projects_subname=0x7f070010;
         public static final int ref_no=0x7f070006;
         public static final int return_date=0x7f070008;
         public static final int returndate_tv=0x7f070007;
         public static final int school_logo=0x7f070000;
-        public static final int semester_name=0x7f070055;
-        public static final int sharebutton=0x7f070060;
+        public static final int semester_name=0x7f070059;
+        public static final int sharebutton=0x7f070062;
         public static final int signup_btn_register=0x7f070027;
         public static final int signup_edittext_mmsid=0x7f070025;
         public static final int signup_headertext=0x7f070024;
         public static final int singup_btn_register=0x7f070026;
-        public static final int text=0x7f070061;
+        public static final int text=0x7f070063;
         public static final int viewflipper=0x7f07002b;
     }
     public static final class layout {

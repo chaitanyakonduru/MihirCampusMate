@@ -46,12 +46,64 @@
                 <TableLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
+
+                    <TableRow
+                        android:id="@+id/notification_title_table_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip"
+                        android:visibility="gone" >
 
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Notification Title"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:text=" : "
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/notification_title"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textColor="@android:color/white" />
+                    </TableRow>
+
+                    <TableRow
+                        android:id="@+id/notification_type_table_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dip" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text="Type"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:text=" :  "
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/notification_type"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:textColor="@android:color/white" />
+                    </TableRow>
+
                     <TableRow
                         android:id="@+id/TableRow04"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip" >
+                        android:layout_marginTop="10dip"
+                        android:visibility="gone" >
 
                         <TextView
                             android:layout_width="0dp"
@@ -82,7 +134,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:text="Course Code"
+                            android:text="Code"
                             android:textColor="@android:color/white"
                             android:textStyle="bold" />
 
@@ -108,7 +160,7 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:text="Course Name"
+                            android:text="Name"
                             android:textColor="@android:color/white"
                             android:textStyle="bold" />
 
@@ -125,12 +177,13 @@
                             android:textColor="@android:color/white" />
 
                     </TableRow>
-
+
                     <TableRow
                         android:id="@+id/TableRow01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip" >
+                        android:layout_marginTop="10dip"
+                        android:visibility="gone" >
 
                         <TextView
                             android:layout_width="0dp"
@@ -146,58 +199,6 @@
 
                         <TextView
                             android:id="@+id/course_grade"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:text=""
-                            android:textColor="@android:color/white" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip" >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:text="Notification Type"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:text=" :  "
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/notification_type"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:text=""
-                            android:textColor="@android:color/white" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip" >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:text="Notification Title"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:text=" : "
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/notification_title"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:text=""
@@ -249,20 +250,33 @@
                             android:text=" :  "
                             android:textColor="@android:color/white"
                             android:textStyle="bold" />
-
+ 						<TextView
+                           
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:visibility="invisible"
+                            android:textColor="@android:color/white" />
+
+                    </TableRow>
+						<TableRow android:layout_width="match_parent"
+						    android:paddingTop="10dip"
+						    android:layout_height="wrap_content">
+						    
                         <TextView
                             android:id="@+id/notification_details"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:text=""
                             android:textColor="@android:color/white" />
-
-                    </TableRow>
-
+						    
+						    
+						</TableRow>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dip" >
+                        android:layout_marginTop="10dip"
+                        android:visibility="gone" >
 
                         <TextView
                             android:layout_width="0dp"
